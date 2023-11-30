@@ -3,60 +3,12 @@
     "login": {
       "title": "Sign in to your account",
       "signin": "Sign in",
-      "signup": "Sign up",
-      "divider": "or",
       "fields": {
-        "email": "Email",
-        "password": "Password",
         "token": "Personal Access Token"
-      },
-      "errors": {
-        "validEmail": "Invalid email address"
       },
       "buttons": {
         "submit": "Login",
-        "forgotPassword": "Forgot password?",
-        "noAccount": "Don’t have an account?",
         "rememberMe": "Remember me"
-      }
-    },
-    "forgotPassword": {
-      "title": "Forgot your password?",
-      "fields": {
-        "email": "Email"
-      },
-      "errors": {
-        "validEmail": "Invalid email address"
-      },
-      "buttons": {
-        "submit": "Send reset instructions"
-      }
-    },
-    "register": {
-      "title": "Sign up for your account",
-      "fields": {
-        "email": "Email",
-        "password": "Password"
-      },
-      "errors": {
-        "validEmail": "Invalid email address"
-      },
-      "buttons": {
-        "submit": "Register",
-        "haveAccount": "Have an account?"
-      }
-    },
-    "updatePassword": {
-      "title": "Update password",
-      "fields": {
-        "password": "New Password",
-        "confirmPassword": "Confirm new password"
-      },
-      "errors": {
-        "confirmPasswordNotMatch": "Passwords do not match"
-      },
-      "buttons": {
-        "submit": "Update"
       }
     },
     "error": {
@@ -109,53 +61,30 @@
   "dashboard": {
     "title": "Dashboard"
   },
-  "blog_posts": {
-    "blog_posts": "Blog Posts",
+  "repositories": {
+    "repositories": "Repositories",
     "fields": {
       "id": "Id",
-      "title": "Title",
-      "content": "Content",
-      "status": "Status",
-      "createdAt": "Created At",
-      "category": "Category"
+      "name": "Name",
+      "owner": "Owner",
+      "visibility": "Visibility"
     },
     "titles": {
-      "create": "Create Blog Post",
-      "edit": "Edit Blog Post",
-      "list": "Blog Posts",
-      "show": "Show Blog Post"
-    }
-  },
-  "categories": {
-    "categories": "Categories",
-    "fields": {
-      "id": "Id",
-      "title": "Title",
-      "createdAt": "Created At"
-    },
-    "titles": {
-      "create": "Create Category",
-      "edit": "Edit Category",
-      "list": "Categories",
-      "show": "Show Category"
+      "create": "Create Repository",
+      "edit": "Edit Repository",
+      "list": "Repositories",
+      "show": "Show Repository"
     }
   },
   "documentTitle": {
-    "default": "refine",
-    "suffix": " | refine",
-    "blog_posts": {
-      "list": "Blog Posts | refine",
-      "show": "#{{id}} Show Blog Post | refine",
-      "edit": "#{{id}} Edit Blog Post | refine",
-      "create": "Create new Blog Post | refine",
-      "clone": "#{{id}} Clone Blog Post | refine"
-    },
-    "categories": {
-      "list": "Categories | refine",
-      "show": "#{{id}} Show Category | refine",
-      "edit": "#{{id}} Edit Category | refine",
-      "create": "Create new Category | refine",
-      "clone": "#{{id}} Clone Category | refine"
+    "default": "Github Dashboard",
+    "suffix": " | Github Dashboard",
+    "repositories": {
+      "list": "Repositories | Github Dashboard",
+      "show": "#{{id}} Show Repository | Github Dashboard",
+      "edit": "#{{id}} Edit Repository | Github Dashboard",
+      "create": "Create new Repository | Github Dashboard",
+      "clone": "#{{id}} Clone Repository | Github Dashboard"
     }
   },
   "table": {
