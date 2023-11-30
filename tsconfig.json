@@ -25,6 +25,12 @@
       "@components": [
         "src/components"
       ],
+      "@resources/*": [
+        "src/resources/*"
+      ],
+      "@helpers/*": [
+        "src/helpers/*"
+      ],
       "@contexts/*": [
         "src/contexts/*"
       ],
