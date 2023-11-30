@@ -21,7 +21,7 @@ import { appWithTranslation, useTranslation } from "next-i18next";
 import { PageTitle } from "@components/page-title";
 import { useAuthProvider } from "@hooks/useAuthProvider";
 
-const API_URL = "https://api.fake-rest.refine.dev";
+const API_URL = "/api/";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   noLayout?: boolean;
@@ -39,11 +39,10 @@ const RefineApp = (props: React.PropsWithChildren) => {
     changeLocale: (lang: string) => i18n.changeLanguage(lang),
     getLocale: () => i18n.language,
   };
-  
+
   if (isLoading) {
     return <span>loading...</span>;
   }
-  
 
   return (
     <>
@@ -59,23 +58,13 @@ const RefineApp = (props: React.PropsWithChildren) => {
               i18nProvider={i18nProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
+                  name: "repositories",
+                  list: "/repositories",
+                  show: "/repositories/:id",
                   meta: {
-                    canDelete: true,
-                  },
-                },
-                {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
-                  meta: {
-                    canDelete: true,
+                    canDelete: false,
+                    canCreate: false,
+                    canEdit: false,
                   },
                 },
               ]}
@@ -98,7 +87,6 @@ const RefineApp = (props: React.PropsWithChildren) => {
     </>
   );
 };
-
 
 function MyApp({
   Component,
