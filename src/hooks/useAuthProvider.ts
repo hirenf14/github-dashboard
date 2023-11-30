@@ -10,7 +10,6 @@ export const useAuthProvider = (): AuthProviderHookResult => {
   const { data, status } = useSession();
   const authProvider: AuthBindings = {
     login: async ({ personalAccessToken }) => {
-      console.log("login", personalAccessToken);
       const signInResponse = await signIn("git-pat", {
         personalAccessToken,
         callbackUrl: "/",
@@ -72,7 +71,10 @@ export const useAuthProvider = (): AuthProviderHookResult => {
     getIdentity: async () => {
       if (data?.user) {
         const { user } = data;
-        return user;
+        return {
+          ...user,
+          avatar: user.image
+        };
       }
       return null;
     },
