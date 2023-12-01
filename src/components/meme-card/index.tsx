@@ -1,19 +1,12 @@
 import { BoxProps, Image } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useCustom } from "@refinedev/core";
 
-const fetchMeme = async () => {
-  const response = await fetch("https://meme-api.com/gimme");
-  const { url } = await response.json();
-  return url;
-};
 
 export const MemeCard: React.FC<BoxProps> = (props) => {
-  const [img, setImg] = useState();
-  useEffect(() => {
-    fetchMeme()
-      .then((url) => setImg(url))
-      .catch(() => console.log("Bad luck!, can't get you a meme."));
-  }, []);
-  if (!img) return <></>;
-  return <Image {...props} src={img} />;
+  const { data, isLoading } = useCustom({
+    url: "https://meme-api.com/gimme/webdevmemes",
+    method: "get"
+  });
+  if (isLoading) return <></>;
+  return <Image {...props} src={data?.data.url} />;
 };
