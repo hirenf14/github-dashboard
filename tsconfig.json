@@ -31,6 +31,10 @@
       "@helpers/*": [
         "src/helpers/*"
       ],
+
+      "@config/*": [
+        "src/config/*"
+      ],
       "@contexts/*": [
         "src/contexts/*"
       ],

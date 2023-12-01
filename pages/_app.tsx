@@ -20,6 +20,7 @@ import dataProvider from "@refinedev/simple-rest";
 import { appWithTranslation, useTranslation } from "next-i18next";
 import { PageTitle } from "@components/page-title";
 import { useAuthProvider } from "@hooks/useAuthProvider";
+import { resources } from "@config/resources";
 
 const API_URL = "/api/";
 
@@ -56,18 +57,7 @@ const RefineApp = (props: React.PropsWithChildren) => {
               notificationProvider={notificationProvider}
               authProvider={authProvider}
               i18nProvider={i18nProvider}
-              resources={[
-                {
-                  name: "repositories",
-                  list: "/repositories",
-                  show: "/repositories/:id",
-                  meta: {
-                    canDelete: false,
-                    canCreate: false,
-                    canEdit: false,
-                  },
-                },
-              ]}
+              resources={resources}
               options={{
                 syncWithLocation: true,
                 disableTelemetry: true,
