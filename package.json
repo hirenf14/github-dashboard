@@ -23,6 +23,7 @@
     "@refinedev/simple-rest": "^4.0.0",
     "@tabler/icons": "^1.1.0",
     "lodash": "^4.17.21",
+    "luxon": "^3.4.4",
     "next": "^13.0.6",
     "next-auth": "^4.24.5",
     "next-i18next": "^8.9.0",
@@ -33,6 +34,7 @@
     "react-hook-form": "^7.48.2"
   },
   "devDependencies": {
+    "@types/luxon": "^3.3.6",
     "@types/node": "^12.20.11",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
