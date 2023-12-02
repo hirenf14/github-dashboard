@@ -26,7 +26,7 @@ export const DashboardCard: React.FunctionComponent<IDashboardCardProps> = ({
     <Card overflow="hidden" bgColor={bgColor} {...props}>
       {title && (
         <CardHeader py={3} bgColor={titleBgColor}>
-          <Flex gap={2}>
+          <Flex gap={2} align="center">
             <Flex flex={1} flexWrap="wrap">
               <Heading fontSize="lg" fontWeight={600}>
                 {title}
