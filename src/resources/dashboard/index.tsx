@@ -6,13 +6,13 @@ import React, { useMemo } from "react";
 import { CommitHistoryChart } from "@components/charts";
 import { DashboardCard } from "@components/cards";
 import { formatHistory } from "@helpers/formatHistory";
-import { ContributionWeek } from "@interfaces/contributions";
+import { ContributionStats } from "@interfaces/contributions";
 
 export const Dashboard: React.FC<IResourceComponentsProps> = () => {
-  const { data } = useList<ContributionWeek>({ resource: "stats" });
+  const { data } = useList<ContributionStats>({ resource: "stats" });
   const history = useMemo(() => {
-    return formatHistory(data?.data || []);
-  }, [data]);
+    return formatHistory(data?.data[0].contributions || []);
+  }, []);
   return (
     <Grid gridTemplateColumns="repeat(12, 1fr)" gap={4}>
       <GridItem colSpan={7}>
