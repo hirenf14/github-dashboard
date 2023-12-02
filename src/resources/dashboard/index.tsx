@@ -8,6 +8,7 @@ import { formatHistory } from "@helpers/formatHistory";
 import { ContributionStats } from "@interfaces/contributions";
 import { formatContributionStats } from "@helpers/formatContributionStats";
 import { ActivityOverviewChart } from "@components/charts";
+import WeekdayHistoryChart from "@components/charts/WeekdayHistoryChart";
 
 export const Dashboard: React.FC<IResourceComponentsProps> = () => {
   const { data } = useList<ContributionStats>({ resource: "stats" });
@@ -30,6 +31,13 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
         <DashboardCard title="Activity Overview">
           <Box height={300}>
             <ActivityOverviewChart data={stats} />
+          </Box>
+        </DashboardCard>
+      </GridItem>
+      <GridItem colSpan={3}>
+        <DashboardCard title="Working Weekdays">
+          <Box height={300}>
+            <WeekdayHistoryChart data={history} />
           </Box>
         </DashboardCard>
       </GridItem>
