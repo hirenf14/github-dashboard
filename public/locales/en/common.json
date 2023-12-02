@@ -13,7 +13,7 @@
     },
     "error": {
       "info": "You may have forgotten to add the {{action}} component to {{resource}} resource.",
-      "404": "Sorry, the page you visited does not exist.",
+      "404": "Stop wandering, and go back to your home.",
       "resource404": "Are you sure you have created the {{resource}} resource.",
       "backHome": "Back Home"
     }
@@ -77,14 +77,14 @@
     }
   },
   "documentTitle": {
-    "default": "Github Dashboard",
-    "suffix": " | Github Dashboard",
+    "default": "Refined Github",
+    "suffix": " | Refined Github",
     "repositories": {
-      "list": "Repositories | Github Dashboard",
-      "show": "#{{id}} Show Repository | Github Dashboard",
-      "edit": "#{{id}} Edit Repository | Github Dashboard",
-      "create": "Create new Repository | Github Dashboard",
-      "clone": "#{{id}} Clone Repository | Github Dashboard"
+      "list": "Repositories | Refined Github",
+      "show": "#{{id}} Show Repository | Refined Github",
+      "edit": "#{{id}} Edit Repository | Refined Github",
+      "create": "Create new Repository | Refined Github",
+      "clone": "#{{id}} Clone Repository | Refined Github"
     }
   },
   "table": {

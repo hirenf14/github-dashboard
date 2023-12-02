@@ -1,7 +1,7 @@
-import { ErrorComponent } from "@refinedev/chakra-ui";
 import { GetServerSideProps } from "next";
 import { getServerSession } from "next-auth";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ErrorComponent } from "@components/error";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function CatchAll() {
@@ -9,11 +9,10 @@ export default function CatchAll() {
 }
 
 export const getServerSideProps: GetServerSideProps<{}> = async (context) => {
-  
   const translateProps = await serverSideTranslations(context.locale ?? "en", [
     "common",
   ]);
-  const session = await getServerSession(context.req, context.res, authOptions)
+  const session = await getServerSession(context.req, context.res, authOptions);
   if (!session) {
     return {
       props: {
