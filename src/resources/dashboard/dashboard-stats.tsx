@@ -12,7 +12,7 @@ import React from "react";
 import { IconBrandGit, IconGitCommit, IconGitPullRequest } from "@tabler/icons";
 
 interface IDashboardStatsProps {
-  stats: ContributionStats;
+  stats?: ContributionStats;
   dateRange: string;
 }
 
@@ -44,19 +44,19 @@ export const DashboardStats: React.FunctionComponent<IDashboardStatsProps> = ({
     <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4}>
       <StatCard
         label="Repositories"
-        stat={stats.repositories}
+        stat={stats?.repositories || 0}
         helpText={dateRange}
         icon={<IconBrandGit />}
       />
       <StatCard
         label="Commits"
-        stat={stats.commits}
+        stat={stats?.commits || 0}
         helpText={dateRange}
         icon={<IconGitCommit />}
       />
       <StatCard
         label="Pull Requests"
-        stat={stats.prs}
+        stat={stats?.prs || 0}
         helpText={dateRange}
         icon={<IconGitPullRequest />}
       />
