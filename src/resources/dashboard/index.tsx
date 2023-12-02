@@ -3,7 +3,7 @@ import { MemeCard } from "@components/meme-card";
 import { temp } from "@config/temp";
 import { IResourceComponentsProps, useList } from "@refinedev/core";
 import React, { useMemo } from "react";
-import { CommitHistoryChart } from "./charts/CommitHistoryChart";
+import { CommitHistoryChart } from "@components/charts";
 import { DashboardCard } from "@components/cards";
 import { formatHistory } from "@helpers/formatHistory";
 import { ContributionWeek } from "@interfaces/contributions";
