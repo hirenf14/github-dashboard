@@ -1,3 +1,14 @@
+export interface GithubUser {
+  login: string;
+  bio: string;
+  avatarUrl: string;
+  id: string;
+  name: string;
+  pronouns: string;
+}
+
+export interface UserWithStats extends GithubUser, ContributionStats {}
+
 export interface ContributionStats {
   repositories: number;
   commits: number;
