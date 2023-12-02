@@ -25,8 +25,8 @@ export const ChartToolTip: React.FC<IChartToolTipProps<number | string>> = ({
       </Text>
       {payload
         .filter((indicator) => indicator.value)
-        .map((indicator) => (
-          <Text fontSize="sm" fontWeight={600} color={indicator.color}>
+        .map((indicator, index) => (
+          <Text key={index} fontSize="sm" fontWeight={600} color={indicator.color}>
             {indicator.name}:{" "}
             <Text as="span" color="initial">
               {indicator.value}
