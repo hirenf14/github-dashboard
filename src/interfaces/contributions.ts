@@ -1,3 +1,11 @@
+export interface ContributionStats {
+  commits: number;
+  prs: number;
+  issues: number;
+  reviews: number;
+  contributions: ContributionWeek[];
+}
+
 export interface ContributionWeek {
   contributionDays: ContributionDay[];
 }
