@@ -28,7 +28,11 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
       <GridItem colSpan={6}>
         <DashboardCard
           title="Contributions"
-          actions={<Text fontSize="sm">{dateRange}</Text>}
+          actions={
+            <Text fontSize="sm" opacity={0.7}>
+              {dateRange}
+            </Text>
+          }
         >
           <Box height={300}>
             <CommitHistoryChart history={history} />
@@ -36,14 +40,28 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
         </DashboardCard>
       </GridItem>
       <GridItem colSpan={3}>
-        <DashboardCard title="Activity Overview">
+        <DashboardCard
+          title="Activity Overview"
+          actions={
+            <Text fontSize="sm" opacity={0.7}>
+              {dateRange}
+            </Text>
+          }
+        >
           <Box height={300}>
             <ActivityOverviewChart data={stats} />
           </Box>
         </DashboardCard>
       </GridItem>
       <GridItem colSpan={3}>
-        <DashboardCard title="Working Weekdays">
+        <DashboardCard
+          title="Working Weekdays"
+          actions={
+            <Text fontSize="sm" opacity={0.7}>
+              {dateRange}
+            </Text>
+          }
+        >
           <Box height={300}>
             <WeekdayHistoryChart data={history} />
           </Box>
