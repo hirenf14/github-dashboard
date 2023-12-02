@@ -31,7 +31,8 @@
     "octokit": "^3.1.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-hook-form": "^7.48.2"
+    "react-hook-form": "^7.48.2",
+    "recharts": "^2.10.3"
   },
   "devDependencies": {
     "@types/luxon": "^3.3.6",
