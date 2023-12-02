@@ -6,6 +6,7 @@ const query = `
 query Contributions($from: DateTime!, $to: DateTime!) {
 	viewer {
 		contributionsCollection(from: $from, to: $to) {
+      totalRepositoryContributions
       totalCommitContributions
       totalPullRequestContributions
       totalIssueContributions
@@ -35,6 +36,7 @@ export default withOctokit(async (_req, res, octokit) => {
   const contributions = get(collection, "contributionCalendar.weeks", []);
   res.status(200).json([
     {
+      repositories: collection.totalRepositoryContributions || 0,
       commits: collection.totalCommitContributions || 0,
       prs: collection.totalPullRequestContributions || 0,
       issues: collection.totalIssueContributions || 0,

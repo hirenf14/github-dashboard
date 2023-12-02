@@ -1,4 +1,5 @@
 export interface ContributionStats {
+  repositories: number;
   commits: number;
   prs: number;
   issues: number;
