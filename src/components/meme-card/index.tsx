@@ -1,12 +1,31 @@
-import { BoxProps, Image } from "@chakra-ui/react";
+import { Box, BoxProps, Icon, Image, Text, Tooltip } from "@chakra-ui/react";
+import { DashboardCard } from "@components/cards";
 import { useCustom } from "@refinedev/core";
-
+import { IconQuestionCircle } from "@tabler/icons";
 
 export const MemeCard: React.FC<BoxProps> = (props) => {
-  const { data, isLoading } = useCustom({
+  const { data } = useCustom({
     url: "https://meme-api.com/gimme/ProgrammerHumor",
-    method: "get"
+    method: "get",
   });
-  if (isLoading) return <></>;
-  return <Image {...props} src={data?.data.url} />;
+  return (
+    <DashboardCard
+      title={data?.data.title || "Loading meme...."}
+      actions={
+        <Tooltip hasArrow label="Just a meme">
+          <Box>
+            <IconQuestionCircle />
+          </Box>
+        </Tooltip>
+      }
+    >
+      <Image
+        {...props}
+        maxH={400}
+        m="auto"
+        objectFit="contain"
+        src={data?.data.url}
+      />
+    </DashboardCard>
+  );
 };

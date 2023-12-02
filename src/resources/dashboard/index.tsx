@@ -73,9 +73,7 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
         </DashboardCard>
       </GridItem>
             <GridItem colSpan={7}>
-        <DashboardCard title="Random Meme">
-          <MemeCard maxH={400} m="auto" objectFit="contain" />
-        </DashboardCard>
+              <MemeCard />
             </GridItem>
           </Grid>
         </Stack>
