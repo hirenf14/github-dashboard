@@ -1,29 +1,29 @@
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { MemeCard } from "@components/meme-card";
-import { IResourceComponentsProps, useList } from "@refinedev/core";
+import { IResourceComponentsProps, useOne } from "@refinedev/core";
 import React, { useMemo } from "react";
 import { CommitHistoryChart } from "@components/charts";
 import { DashboardCard } from "@components/cards";
 import { formatHistory } from "@helpers/formatHistory";
-import { ContributionStats } from "@interfaces/contributions";
+import { UserWithStats } from "@interfaces/contributions";
 import { formatContributionStats } from "@helpers/formatContributionStats";
 import { ActivityOverviewChart } from "@components/charts";
 import WeekdayHistoryChart from "@components/charts/WeekdayHistoryChart";
 import { DashboardStats } from "./dashboard-stats";
 
 export const Dashboard: React.FC<IResourceComponentsProps> = () => {
-  const { data } = useList<ContributionStats>({ resource: "stats" });
+  const { data } = useOne<UserWithStats>({ resource: "stats", id: "me" });
   const stats = useMemo(() => {
-    return formatContributionStats(data?.data[0]);
+    return formatContributionStats(data?.data);
   }, [data]);
   const history = useMemo(() => {
-    return formatHistory(data?.data[0].contributions || []);
+    return formatHistory(data?.data.contributions || []);
   }, [data]);
   const dateRange = "Last 6 months";
   return (
     <Grid gridTemplateColumns="repeat(12, 1fr)" gap={4}>
       <GridItem colSpan={12}>
-        <DashboardStats stats={data?.data[0]} dateRange={dateRange} />
+        <DashboardStats stats={data?.data} dateRange={dateRange} />
       </GridItem>
       <GridItem colSpan={6}>
         <DashboardCard
