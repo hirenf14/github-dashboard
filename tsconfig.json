@@ -28,6 +28,9 @@
       "@resources/*": [
         "src/resources/*"
       ],
+      "@interfaces/*": [
+        "src/interfaces/*"
+      ],
       "@helpers/*": [
         "src/helpers/*"
       ],
