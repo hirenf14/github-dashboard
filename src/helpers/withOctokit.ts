@@ -6,7 +6,8 @@ export const withOctokit = (
   handler: (
     req: NextApiRequest,
     res: NextApiResponse<any>,
-    octokit: Octokit
+    octokit: Octokit,
+    login?: string
   ) => Promise<void>
 ) => {
   return async function (req: NextApiRequest, res: NextApiResponse<any>) {
@@ -14,6 +15,6 @@ export const withOctokit = (
       req,
     });
     const octokit = new Octokit({ auth: token!.accessToken });
-    return await handler(req, res, octokit);
+    return await handler(req, res, octokit, token?.sub);
   };
 };
