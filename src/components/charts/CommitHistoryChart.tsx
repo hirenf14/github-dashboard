@@ -45,7 +45,12 @@ export const CommitHistoryChart: React.FunctionComponent<
           )}
         />
         <Legend />
-        <Area dataKey="contributions" name="Contributions" stroke="#8884d8" />
+        <Area
+          dataKey="contributions"
+          name="Contributions"
+          stroke="#40c463"
+          fill="#40c463"
+        />
       </AreaChart>
     </ResponsiveContainer>
   );
