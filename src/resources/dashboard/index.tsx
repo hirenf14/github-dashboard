@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Stack, Text } from "@chakra-ui/react";
 import { MemeCard } from "@components/meme-card";
 import { IResourceComponentsProps, useOne } from "@refinedev/core";
 import React, { useMemo } from "react";
@@ -10,6 +10,7 @@ import { formatContributionStats } from "@helpers/formatContributionStats";
 import { ActivityOverviewChart } from "@components/charts";
 import WeekdayHistoryChart from "@components/charts/WeekdayHistoryChart";
 import { DashboardStats } from "./dashboard-stats";
+import { UserInfo } from "@components/user-info";
 
 export const Dashboard: React.FC<IResourceComponentsProps> = () => {
   const { data } = useOne<UserWithStats>({ resource: "stats", id: "me" });
@@ -22,24 +23,14 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
   const dateRange = "Last 6 months";
   return (
     <Grid gridTemplateColumns="repeat(12, 1fr)" gap={4}>
-      <GridItem colSpan={12}>
-        <DashboardStats stats={data?.data} dateRange={dateRange} />
-      </GridItem>
-      <GridItem colSpan={6}>
-        <DashboardCard
-          title="Contributions"
-          actions={
-            <Text fontSize="sm" opacity={0.7}>
-              {dateRange}
-            </Text>
-          }
-        >
-          <Box height={300}>
-            <CommitHistoryChart history={history} />
-          </Box>
-        </DashboardCard>
-      </GridItem>
       <GridItem colSpan={3}>
+        <UserInfo user={data?.data} />
+      </GridItem>
+      <GridItem colSpan={9}>
+        <Stack gap={4}>
+          <DashboardStats stats={data?.data} dateRange={dateRange} />
+          <Grid gap={4} gridTemplateColumns="repeat(12, 1fr)">
+            <GridItem colSpan={5}>
         <DashboardCard
           title="Activity Overview"
           actions={
@@ -53,7 +44,21 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
           </Box>
         </DashboardCard>
       </GridItem>
-      <GridItem colSpan={3}>
+            <GridItem colSpan={7}>
+              <DashboardCard
+                title="Contributions"
+                actions={
+                  <Text fontSize="sm" opacity={0.7}>
+                    {dateRange}
+                  </Text>
+                }
+              >
+                <Box height={300}>
+                  <CommitHistoryChart history={history} />
+                </Box>
+              </DashboardCard>
+            </GridItem>
+            <GridItem colSpan={5}>
         <DashboardCard
           title="Working Weekdays"
           actions={
@@ -67,10 +72,13 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
           </Box>
         </DashboardCard>
       </GridItem>
-      <GridItem colSpan={5}>
+            <GridItem colSpan={7}>
         <DashboardCard title="Random Meme">
           <MemeCard maxH={400} m="auto" objectFit="contain" />
         </DashboardCard>
+            </GridItem>
+          </Grid>
+        </Stack>
       </GridItem>
     </Grid>
   );
