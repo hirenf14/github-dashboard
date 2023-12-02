@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { MemeCard } from "@components/meme-card";
 import { IResourceComponentsProps, useList } from "@refinedev/core";
 import React, { useMemo } from "react";
@@ -9,6 +9,7 @@ import { ContributionStats } from "@interfaces/contributions";
 import { formatContributionStats } from "@helpers/formatContributionStats";
 import { ActivityOverviewChart } from "@components/charts";
 import WeekdayHistoryChart from "@components/charts/WeekdayHistoryChart";
+import { DashboardStats } from "./dashboard-stats";
 
 export const Dashboard: React.FC<IResourceComponentsProps> = () => {
   const { data } = useList<ContributionStats>({ resource: "stats" });
@@ -18,10 +19,17 @@ export const Dashboard: React.FC<IResourceComponentsProps> = () => {
   const history = useMemo(() => {
     return formatHistory(data?.data[0].contributions || []);
   }, [data]);
+  const dateRange = "Last 6 months";
   return (
     <Grid gridTemplateColumns="repeat(12, 1fr)" gap={4}>
+      <GridItem colSpan={12}>
+        <DashboardStats stats={data?.data[0]} dateRange={dateRange} />
+      </GridItem>
       <GridItem colSpan={6}>
-        <DashboardCard title="Contributions last 6 months">
+        <DashboardCard
+          title="Contributions"
+          actions={<Text fontSize="sm">{dateRange}</Text>}
+        >
           <Box height={300}>
             <CommitHistoryChart history={history} />
           </Box>
