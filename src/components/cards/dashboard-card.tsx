@@ -21,8 +21,8 @@ export const DashboardCard: React.FunctionComponent<IDashboardCardProps> = ({
   const titleBgColor = useColorModeValue("gray.100", "gray.700");
   return (
     <Card overflow="hidden" bgColor={bgColor} {...props}>
-      <CardHeader py={2} bgColor={titleBgColor}>
-        <Heading fontSize="xl">{title}</Heading>
+      <CardHeader py={3} bgColor={titleBgColor}>
+        <Heading fontSize="lg" fontWeight={600}>{title}</Heading>
       </CardHeader>
       <CardBody p={2}>{children}</CardBody>
     </Card>
