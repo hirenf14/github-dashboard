@@ -1,8 +1,8 @@
 import { useShow, IResourceComponentsProps, useParsed } from "@refinedev/core";
 import { Breadcrumb } from "@refinedev/chakra-ui";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Stack } from "@chakra-ui/react";
 import { Repository } from "@interfaces/repository";
-import { RepositoryCard } from "@components/repository-card";
+import { RepositoryCard, RepositoryStats } from "@components/repository-card";
 
 export const RepositoryShow: React.FC<IResourceComponentsProps> = () => {
   const { resource, id, params } = useParsed();
@@ -20,7 +20,10 @@ export const RepositoryShow: React.FC<IResourceComponentsProps> = () => {
       <Breadcrumb />
       <Grid gridTemplateColumns="repeat(12, 1fr)" gap={4}>
         <GridItem colSpan={3}>
-          <RepositoryCard repository={record} isLoading={isLoading} />
+          <Stack gap={4}>
+            <RepositoryCard repository={record} isLoading={isLoading} />
+            <RepositoryStats repository={record} isLoading={isLoading} />
+          </Stack>
         </GridItem>
       </Grid>
     </Box>
