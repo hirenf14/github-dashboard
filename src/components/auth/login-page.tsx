@@ -64,7 +64,7 @@ const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
               <Input
                 id="token"
                 placeholder="Personal Access Token"
-                type="text"
+                type="password"
                 {...register("personalAccessToken", {
                   required: true,
                   // pattern: {

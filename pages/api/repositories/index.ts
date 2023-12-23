@@ -19,7 +19,7 @@ export default withOctokit(async (req, res, octokit) => {
     per_page: limit,
     page: end / limit,
   });
-  const lastPage = getTotalPages(response.headers.link!) || "1";
+  const lastPage = getTotalPages(response.headers.link || "") || "1";
   return paginateResponse(
     res,
     response.data.map((d) => pick(d, selection)),
