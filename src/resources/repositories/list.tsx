@@ -1,12 +1,15 @@
 import { HStack } from "@chakra-ui/react";
-import { IResourceComponentsProps, useTranslate } from "@refinedev/core";
+import {
+  IResourceComponentsProps,
+  useTranslate,
+} from "@refinedev/core";
 import ResourceTable from "@components/table";
 import { ShowButton } from "@refinedev/chakra-ui";
 import { ColumnDef } from "@tanstack/react-table";
 import React from "react";
 
 export const RepositoriesList: React.FC<IResourceComponentsProps> = () => {
-    const translate = useTranslate();
+  const translate = useTranslate();
   const columns = React.useMemo<ColumnDef<any>[]>(
     () => [
       {
@@ -26,12 +29,18 @@ export const RepositoriesList: React.FC<IResourceComponentsProps> = () => {
       },
       {
         id: "actions",
-        accessorKey: "id",
+        accessorKey: "name",
         header: "Actions",
-        cell: function render({ getValue }) {
+        cell: function render({ getValue, row }) {
           return (
             <HStack>
-              <ShowButton hideText recordItemId={getValue() as string} />
+              <ShowButton
+                hideText
+                recordItemId={getValue() as string}
+                meta={{
+                  owner: row.original.owner.login,
+                }}
+              />
             </HStack>
           );
         },
