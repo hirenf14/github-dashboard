@@ -1,4 +1,13 @@
-import { Avatar, Badge, Box, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Flex,
+  Heading,
+  Skeleton,
+  SkeletonText,
+  Text,
+} from "@chakra-ui/react";
 import { DashboardCard } from "@components/cards";
 import { type Repository } from "@interfaces/repository";
 import { IconLock, IconWorld } from "@tabler/icons";
@@ -13,6 +22,7 @@ interface IRepositoryCardProps {
 
 export const RepositoryCard: React.FunctionComponent<IRepositoryCardProps> = ({
   repository,
+  isLoading,
 }) => {
   const owner = repository?.owner;
   const isPublic = repository?.visibility === "public";
@@ -29,34 +39,40 @@ export const RepositoryCard: React.FunctionComponent<IRepositoryCardProps> = ({
       >
         {isPublic ? <IconWorld /> : <IconLock />}
       </Box>
-      <Flex flexDir="column" gap={2}>
+      <Flex flexDir="column" gap={4}>
         <Flex gap={2}>
           <Avatar name={owner?.login} src={owner?.avatar_url} />
           <Box>
-            <Heading fontSize="2xl" textTransform="capitalize">
-              {repository?.name}
-            </Heading>
-            <Badge
-              colorScheme="black"
-              py={1}
-              px={2}
-              textTransform="unset"
-              opacity={0.7}
-              fontWeight={400}
-              borderRadius="md"
-            >
-              @{repository?.full_name}
-            </Badge>
+            <SkeletonText noOfLines={2} isLoaded={!isLoading}>
+              <Heading fontSize="2xl" textTransform="capitalize">
+                {repository?.name}
+              </Heading>
+              <Badge
+                colorScheme="black"
+                py={1}
+                px={2}
+                textTransform="unset"
+                opacity={0.7}
+                fontWeight={400}
+                borderRadius="md"
+              >
+                @{repository?.full_name}
+              </Badge>
+            </SkeletonText>
           </Box>
         </Flex>
-        <Text>{repository?.description}</Text>
+        <SkeletonText noOfLines={3} isLoaded={!isLoading}>
+          <Text>{repository?.description}</Text>
+        </SkeletonText>
+        <Skeleton isLoaded={!isLoading}>
+          {isPublic && !!repository && (
+            <PrivateShields mt={2} repository={repository} />
+          )}
+          {!isPublic && !!repository && (
+            <PublicShields mt={2} repository={repository} />
+          )}
+        </Skeleton>
       </Flex>
-      {isPublic && !!repository && (
-        <PrivateShields mt={2} repository={repository} />
-      )}
-      {!isPublic && !!repository && (
-        <PublicShields mt={2} repository={repository} />
-      )}
     </DashboardCard>
   );
 };
