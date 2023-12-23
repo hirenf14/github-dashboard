@@ -13,7 +13,7 @@ export const resources: IResourceItem[] = [
     {
       name: "repositories",
       list: "/repositories",
-      show: "/repositories/:id",
+      show: "/repositories/:owner/:id",
       meta: {
         canDelete: false,
         canCreate: false,
