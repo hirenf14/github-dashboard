@@ -68,22 +68,14 @@ const WeekdayHistoryChart: React.FunctionComponent<
   IWeekdayHistoryChartProps
 > = ({ data }) => {
   const summary = useMemo(() => {
-    const weekSummary = data.reduce((a, c) => {
-      let day = 0;
-      while (day < 7) {
-        a[day] = (a[day] || 0) + c[day];
-        day++;
-      }
-      return a;
-    }, {} as Record<number, number>);
     return Array(7)
       .fill(0)
       .map((_d, index) => ({
         name: DateTime.fromFormat(String(index + 1), "c").toFormat("cccc"),
-        value: weekSummary[index] || 0,
+        value: data.reduce((a, c) => a + (c[index] || 0), 0),
       }));
   }, [data]);
-
+  console.log("summary", summary);
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <ResponsiveContainer width="100%" height="100%">
